@@ -1,51 +1,16 @@
-# Causal Attention Geometry
+# Causal Attention Geometry in Transformers
 
-*Hillary Danan, September 2025*
+**Hillary Danan's Research Implementation**
+
+Testing whether transformer models exhibit geometric patterns in attention when processing causal relationships.
 
 ## Overview
 
-This repository investigates whether transformer models exhibit geometric patterns in attention distributions when processing causal relationships. Building on findings from related work in [embodied-cognition](https://github.com/HillaryDanan/embodied-cognition), [retroactive-causality](https://github.com/HillaryDanan/retroactive-causality), and [multi-geometric-attention](https://github.com/HillaryDanan/multi-geometric-attention), this project tests whether attention patterns reflect the underlying topology of causal structures.
+This repository implements three falsifiable hypotheses about causal attention geometry:
 
-## Core Research Questions
-
-1. Do counterfactual statements produce measurable divergence in attention patterns at intervention points?
-2. Do circular causal relationships (feedback loops) exhibit different attention density than linear chains?
-3. Are causal attention patterns layer-specific, following the syntactic hierarchy found by Tenney et al. (2019)?
-
-## Hypotheses
-
-### H1: Counterfactual Divergence
-- **Prediction**: KL divergence > 0.2 at causal intervention points
-- **Rationale**: Based on Pearl's (2009) parallel worlds framework
-- **Falsifiable**: If divergence ≤ 0.2 or p > 0.05, hypothesis rejected
-
-### H2: Feedback Loop Density
-- **Prediction**: Circular causation shows denser attention (Cohen's d > 0.3)
-- **Rationale**: Feedback requires maintaining multiple dependencies
-- **Falsifiable**: If d ≤ 0.3 or no significant difference, hypothesis rejected
-
-### H3: Layer Specificity
-- **Prediction**: Middle layers (5-8) show strongest causal effects
-- **Rationale**: Following Tenney et al. (2019) on syntactic emergence
-- **Falsifiable**: If effects uniform or in early/late layers, hypothesis rejected
-
-## Methodology
-
-### Dataset
-- COPA (Choice of Plausible Alternatives) - Gordon et al., 2012
-- 1000 causal reasoning examples
-- Power analysis: N=64 per condition for 80% power at d=0.5
-
-### Control Conditions
-1. **Temporal**: Replace causal markers with temporal sequence
-2. **Scrambled**: Preserve syntax, break causal logic  
-3. **Conjunction**: Replace causal connectives with "and"
-
-### Statistical Analysis
-- Two-sample t-tests for group comparisons
-- Cohen's d for effect size
-- Bonferroni correction for multiple comparisons
-- Layer-wise analysis to avoid aggregation artifacts
+1. **Counterfactual Divergence**: Attention patterns diverge at causal intervention points (KL > 0.2)
+2. **Feedback Loop Density**: Circular causation shows denser attention than linear (Cohen's d > 0.3)  
+3. **Layer Specificity**: Middle layers (5-8) show strongest causal effects
 
 ## Installation
 
@@ -61,14 +26,25 @@ pip install -r requirements.txt
 python3 -m spacy download en_core_web_sm
 ```
 
-## Usage
+## Quick Start
 
-```python
-# Run main experiment
-python3 run_experiments.py
+Run all experiments with default settings:
 
-# Run specific hypothesis test
-python3 experiments/test_counterfactual.py
+```bash
+python3 experiments/run_all.py
+```
+
+Run individual experiments:
+
+```bash
+# Hypothesis 1: Counterfactual Divergence
+python3 experiments/test_counterfactual.py --n-samples=64
+
+# Hypothesis 2: Feedback Loop Density  
+python3 experiments/test_feedback_loop.py --n-samples=64
+
+# Hypothesis 3: Layer Specificity
+python3 experiments/test_layer_specificity.py --n-samples=64 --visualize
 ```
 
 ## Project Structure
@@ -76,49 +52,174 @@ python3 experiments/test_counterfactual.py
 ```
 causal-attention-geometry/
 ├── src/
-│   ├── attention_extractor.py      # Extract attention patterns
-│   ├── layerwise_analyzer.py       # Layer-specific analysis
-│   └── statistical_tests.py        # Statistical utilities
+│   └── causal_attention.py          # Core analysis module
 ├── experiments/
-│   ├── test_counterfactual.py      # H1: Counterfactual divergence
-│   ├── test_feedback_loops.py      # H2: Circular causation
-│   └── test_layer_effects.py       # H3: Layer specificity
-├── data/
-│   └── copa_processed.json         # Processed COPA examples
-└── results/
-    └── [timestamp]_results.json    # Experimental results
+│   ├── test_counterfactual.py       # H1: Counterfactual divergence
+│   ├── test_feedback_loop.py        # H2: Feedback loop density
+│   ├── test_layer_specificity.py    # H3: Layer specificity
+│   └── run_all.py                   # Run all experiments
+├── results/
+│   ├── h1_counterfactual_results.json
+│   ├── h2_feedback_results.json
+│   ├── h3_layer_analysis.json
+│   ├── h3_layer_effects_plot.png
+│   ├── summary_statistics.txt
+│   └── summary.json
+├── data/                             # Dataset storage
+├── requirements.txt
+└── README.md
 ```
 
-## Expected Outcomes
+## Hypotheses Details
 
-### If Hypotheses Supported:
-- Transformers implicitly learn causal topology
-- Attention geometry reflects causal structure
-- Foundation for geometric optimization of causal reasoning
+### Hypothesis 1: Counterfactual Divergence
 
-### If Hypotheses Rejected:
-- Attention patterns don't capture causal semantics
-- Need alternative mechanisms for causal representation
-- Valuable null result constraining interpretability claims
+**Claim**: Attention patterns diverge at causal intervention points when comparing factual vs counterfactual statements.
+
+**Method**:
+- Extract attention at dependency-parsed intervention points
+- Calculate KL divergence between factual/counterfactual pairs
+- Test against threshold (KL > 0.2)
+
+**Expected**: Statistically significant divergence with medium effect size
+
+### Hypothesis 2: Feedback Loop Density
+
+**Claim**: Circular causation (A→B→C→A) produces denser attention patterns than linear causation (A→B→C).
+
+**Method**:
+- Compare attention density (off-diagonal weights)
+- Three conditions: circular, linear, control
+- Calculate Cohen's d between conditions
+
+**Expected**: d > 0.3 between circular and linear conditions
+
+### Hypothesis 3: Layer Specificity
+
+**Claim**: Middle transformer layers (5-8) show strongest causal effects, following Tenney et al. (2019).
+
+**Method**:
+- Layer-wise analysis of causal vs non-causal texts
+- Effect sizes per layer with Bonferroni correction
+- ANOVA across layer groups (early/middle/late)
+
+**Expected**: Peak effects in layers 5-8
+
+## Statistical Rigor
+
+All experiments include:
+- **Power analysis**: N=64 for 80% power at specified effect sizes
+- **Effect sizes**: Cohen's d reported for all comparisons
+- **Multiple comparisons**: Bonferroni correction applied
+- **Confidence intervals**: 95% CI for key metrics
+- **Null hypothesis testing**: Clear falsifiable predictions
+
+## Results Interpretation
+
+### Success Metrics
+- ✓ Hypothesis supported if statistical criteria met
+- ✗ Null results equally valuable - constrain interpretability claims
+- Mixed evidence indicates trends requiring larger samples
+
+### Output Files
+- `h1_counterfactual_results.json`: Divergence analysis
+- `h2_feedback_results.json`: Density comparisons
+- `h3_layer_analysis.json`: Layer-wise effects
+- `summary_statistics.txt`: Human-readable summary
+- `summary.json`: Machine-readable metrics
+
+## Scientific Principles
+
+1. **Correlation ≠ Causation**: Even when studying causation
+2. **Falsifiability**: Clear predictions that can be wrong
+3. **Null Results Matter**: Constraints on interpretability claims
+4. **Replicability**: Raw data saved, random seeds fixed
 
 ## Related Work
 
-This project extends geometric insights from:
-- [Multi-Geometric Attention Theory](https://github.com/HillaryDanan/multi-geometric-attention) - theoretical framework
-- [Retroactive Causality](https://github.com/HillaryDanan/retroactive-causality) - temporal dependencies  
-- [Cross-Linguistic Attention Dynamics](https://github.com/HillaryDanan/cross-linguistic-attention-dynamics) - language variation
+This extends Hillary Danan's research on:
+- Multi-geometric attention patterns
+- Retroactive causality in language models  
+- Cross-linguistic attention dynamics
+- Embodied cognition without bodies
 
-## Citations
+## Configuration Options
 
-- Pearl, J. (2009). *Causality*. Cambridge University Press.
-- Gordon, A. et al. (2012). SemEval-2012 Task 7: COPA. *SemEval*.
-- Tenney, I. et al. (2019). BERT Rediscovers Classical NLP. *ACL*.
-- Vig, J. & Belinkov, Y. (2019). Analyzing Structure in Transformer Representations. *ACL*.
+```python
+# Model selection
+--model bert-base-uncased  # Default
+--model roberta-base       # Alternative
 
-## Contact
+# Sample size (affects statistical power)
+--n-samples 64   # Default (80% power)
+--n-samples 128  # Higher power
 
-Hillary Danan - Independent Researcher
+# Visualization
+--visualize      # Generate plots for layer analysis
+```
+
+## Troubleshooting
+
+**Issue**: `ModuleNotFoundError: No module named 'spacy'`
+```bash
+pip install spacy
+python3 -m spacy download en_core_web_sm
+```
+
+**Issue**: CUDA/GPU errors
+```bash
+# Run on CPU only
+export CUDA_VISIBLE_DEVICES=""
+```
+
+**Issue**: Memory errors with large models
+```bash
+# Reduce batch size or use smaller model
+--model distilbert-base-uncased
+```
+
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@software{danan2025causal,
+  author = {Danan, Hillary},
+  title = {Causal Attention Geometry in Transformers},
+  year = {2025},
+  url = {https://github.com/HillaryDanan/causal-attention-geometry}
+}
+```
+
+## Future Directions
+
+1. **Larger Models**: Test GPT-style architectures
+2. **Cross-linguistic**: Compare causal patterns across languages
+3. **Temporal Dynamics**: Autoregressive causal processing
+4. **Integration**: Connect with multi-geometric findings
+5. **Retroactive**: Explore backward causal influences
+
+## Contributing
+
+Contributions welcome! Please ensure:
+- Maintain statistical rigor
+- Include power analysis
+- Report effect sizes
+- Document null results
 
 ## License
 
-MIT
+MIT License - See LICENSE file for details
+
+## Acknowledgments
+
+Thanks to:
+- Tenney et al. (2019) for layer analysis methodology
+- COPA dataset creators (Gordon et al., 2012)
+- The broader interpretability research community
+
+---
+
+**Note**: This research values null results equally with positive findings. Both advance scientific understanding of transformer interpretability.
+
+<4577> Dick Tracy's geometric detective work continues! 💕🚀
