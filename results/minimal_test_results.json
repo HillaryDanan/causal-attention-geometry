@@ -1,0 +1,7 @@
+{
+  "test_run": true,
+  "h1_kl_divergence": 0.5556824803352356,
+  "h2_effect_size": -6.185656491856459,
+  "h3_middle_effect": -2.00000035012095,
+  "all_tests_passed": true
+}

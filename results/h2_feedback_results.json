@@ -1,0 +1,77 @@
+{
+  "hypothesis": "feedback_loop_density",
+  "n_samples": 20,
+  "density_statistics": {
+    "circular": {
+      "mean": 0.06873557873802515,
+      "std": 0.007142041347164111,
+      "95_ci": [
+        0.06539300049630568,
+        0.07207815697974461
+      ]
+    },
+    "linear": {
+      "mean": 0.08816190051614843,
+      "std": 0.010152539416852971,
+      "95_ci": [
+        0.08341036580731526,
+        0.0929134352249816
+      ]
+    },
+    "control": {
+      "mean": 0.10152895966475513,
+      "std": 0.004480751947215823
+    }
+  },
+  "effect_sizes": {
+    "circular_vs_linear": -2.1571993554817426,
+    "circular_vs_control": -5.361314494750001,
+    "linear_vs_control": -1.6603259499775511
+  },
+  "statistical_tests": {
+    "circular_vs_linear": {
+      "t_statistic": -6.82166333036954,
+      "p_value": 4.290725567853226e-08
+    },
+    "circular_vs_control": {
+      "t_statistic": -16.953965055884854,
+      "p_value": 2.592672299485995e-19
+    },
+    "anova": {
+      "f_statistic": 88.9924913018808,
+      "p_value": 2.936231542690365e-18
+    }
+  },
+  "hypothesis_supported": false,
+  "layer_analysis": {
+    "effect_sizes_by_layer": {
+      "0": -2.1520165828881574,
+      "1": -2.2185590837583615,
+      "2": -2.001491469845816,
+      "3": -2.0690028715006523,
+      "4": -2.1387055579724663,
+      "5": -2.221255757313409,
+      "6": -2.198311183330581,
+      "7": -2.151920561519038,
+      "8": -2.1119938778188305,
+      "9": -2.096422462422089,
+      "10": -2.3835078523795348,
+      "11": -2.117639183150444
+    },
+    "strongest_effect_layers": [
+      {
+        "layer": 10,
+        "cohens_d": -2.3835078523795348
+      },
+      {
+        "layer": 5,
+        "cohens_d": -2.221255757313409
+      },
+      {
+        "layer": 1,
+        "cohens_d": -2.2185590837583615
+      }
+    ]
+  },
+  "interpretation": "HYPOTHESIS NOT SUPPORTED: Insufficient effect size (-2.157) between circular (mean=0.0687) and linear (mean=0.0882) causation (p=0.0000). Attention geometry may not reflect causal topology as hypothesized."
+}

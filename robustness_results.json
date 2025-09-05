@@ -1,0 +1,70 @@
+{
+  "bert-base-uncased": {
+    "H1_counterfactual": {
+      "mean_kl": 0.18136538267191055,
+      "std_kl": 0.1464568770000224,
+      "p_value": 0.41994602772329204,
+      "supported": false,
+      "n_samples": 42
+    },
+    "H2_feedback": {
+      "circular_mean": 0.07534125303403433,
+      "linear_mean": 0.09028613120593501,
+      "effect_size": -2.2430259021658725,
+      "p_value": 0.03341830876334914,
+      "efficiency_confirmed": true,
+      "n_samples": 4
+    }
+  },
+  "roberta-base": {
+    "H1_counterfactual": {
+      "mean_kl": 0.2197378944176969,
+      "std_kl": 0.2233832219180748,
+      "p_value": 0.565337277859856,
+      "supported": false,
+      "n_samples": 44
+    },
+    "H2_feedback": {
+      "circular_mean": 0.07025341201675922,
+      "linear_mean": 0.08557152431986541,
+      "effect_size": -2.778973504093644,
+      "p_value": 0.014433007572075551,
+      "efficiency_confirmed": true,
+      "n_samples": 4
+    }
+  },
+  "distilbert-base-uncased": {
+    "H1_counterfactual": {
+      "mean_kl": 0.15822157386269065,
+      "std_kl": 0.13353943026205722,
+      "p_value": 0.05179091119512053,
+      "supported": false,
+      "n_samples": 42
+    },
+    "H2_feedback": {
+      "circular_mean": 0.07541540122305683,
+      "linear_mean": 0.09040096987816568,
+      "effect_size": -2.224606003668617,
+      "p_value": 0.034433013918657183,
+      "efficiency_confirmed": true,
+      "n_samples": 4
+    }
+  },
+  "albert-base-v2": {
+    "H1_counterfactual": {
+      "mean_kl": 0.42404464707388323,
+      "std_kl": 0.20889142397380384,
+      "p_value": 2.5347306031683208e-08,
+      "supported": true,
+      "n_samples": 42
+    },
+    "H2_feedback": {
+      "circular_mean": 0.0636062990784051,
+      "linear_mean": 0.07857605197583956,
+      "effect_size": -2.59376165759211,
+      "p_value": 0.019155748224727733,
+      "efficiency_confirmed": true,
+      "n_samples": 4
+    }
+  }
+}

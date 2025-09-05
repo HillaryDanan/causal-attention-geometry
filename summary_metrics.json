@@ -1,0 +1,26 @@
+{
+  "bert-base-uncased": {
+    "H1_kl": 0.18136538267191055,
+    "H1_supported": false,
+    "H2_effect": -2.2430259021658725,
+    "H2_confirmed": true
+  },
+  "roberta-base": {
+    "H1_kl": 0.2197378944176969,
+    "H1_supported": false,
+    "H2_effect": -2.778973504093644,
+    "H2_confirmed": true
+  },
+  "distilbert-base-uncased": {
+    "H1_kl": 0.15822157386269065,
+    "H1_supported": false,
+    "H2_effect": -2.224606003668617,
+    "H2_confirmed": true
+  },
+  "albert-base-v2": {
+    "H1_kl": 0.42404464707388323,
+    "H1_supported": true,
+    "H2_effect": -2.59376165759211,
+    "H2_confirmed": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-09-05T09:39:09.139305",
+  "model": "bert-base-uncased",
+  "n_samples": 64,
+  "hypotheses": {
+    "h1_counterfactual": false,
+    "h2_feedback_loop": false,
+    "h3_layer_specificity": true
+  },
+  "key_metrics": {
+    "h1_kl_divergence": 0.23655922311445465,
+    "h2_effect_size": -2.5146142159046265,
+    "h3_peak_layer": 9
+  }
+}

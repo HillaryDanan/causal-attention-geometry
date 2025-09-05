@@ -1,0 +1,60 @@
+{
+  "hypothesis": "counterfactual_divergence",
+  "n_samples": 20,
+  "mean_kl_divergence": 0.43165501216426494,
+  "std_kl_divergence": 0.4233733159129742,
+  "confidence_interval_95": [
+    0.2335102010232255,
+    0.6297998233053044
+  ],
+  "null_hypothesis_value": 0.2,
+  "t_statistic": 2.3850364438090286,
+  "p_value": 0.027651507467118884,
+  "cohens_d": 0.547164886064483,
+  "hypothesis_supported": true,
+  "layer_analysis": {
+    "mean_by_layer": {
+      "0": 0.0773083089850843,
+      "1": 0.09432084411382675,
+      "2": 0.06758885690942407,
+      "3": 0.17074345480650663,
+      "4": 0.41800968209281564,
+      "5": 0.6364535029046238,
+      "6": 0.5785228700377048,
+      "7": 0.6631473818793893,
+      "8": 0.6781042539514601,
+      "9": 0.49729744493961336,
+      "10": 0.6810564933344722,
+      "11": 0.6173070009797812
+    },
+    "std_by_layer": {
+      "0": 0.06935469173503371,
+      "1": 0.09240202058264793,
+      "2": 0.055274267082356096,
+      "3": 0.1647909790829099,
+      "4": 0.46854537651746314,
+      "5": 0.7424503536142012,
+      "6": 0.6832162555813913,
+      "7": 0.8652628208444594,
+      "8": 0.8543050549973439,
+      "9": 0.6194937197744537,
+      "10": 0.4964469590654869,
+      "11": 0.4778632096375412
+    },
+    "top_diverging_layers": [
+      {
+        "layer": 10,
+        "mean_divergence": 0.6810564933344722
+      },
+      {
+        "layer": 8,
+        "mean_divergence": 0.6781042539514601
+      },
+      {
+        "layer": 7,
+        "mean_divergence": 0.6631473818793893
+      }
+    ]
+  },
+  "interpretation": "HYPOTHESIS SUPPORTED: Attention patterns show significant divergence (mean KL=0.432) at causal intervention points between factual and counterfactual conditions (p=0.0277). Effect size d=0.547 indicates a medium effect. This suggests transformers geometrically distinguish causal structures."
+}

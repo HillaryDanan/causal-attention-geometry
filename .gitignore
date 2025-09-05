@@ -1,10 +1,32 @@
+# Python
 __pycache__/
-*.py[cod]
-*$py.class
-.DS_Store
-.ipynb_checkpoints/
-*.log
+*.pyc
+.pytest_cache/
+
+# Environment
 .env
 venv/
-results/*.json
-data/*.pkl
+
+# Data
+*.csv
+data/raw/
+
+# IDE
+.vscode/
+.idea/
+
+# Mac
+.DS_Store
+
+# Debug files
+debug_scripts/
+test_*.py
+
+*.pyc
+__pycache__/
+.DS_Store
+debug_scripts/
+analysis_scripts/
+*.log
+.env
+

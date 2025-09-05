@@ -1,0 +1,91 @@
+{
+  "hypothesis": "layer_specificity",
+  "n_samples_per_condition": 20,
+  "layer_effect_sizes": {
+    "0": -0.9173460247834673,
+    "1": -0.9173459670963467,
+    "2": -0.9173460549082728,
+    "3": -0.9173459670963467,
+    "4": -0.9173459670963467,
+    "5": -0.917345982158747,
+    "6": -0.9173459520339463,
+    "7": -0.9173459670963467,
+    "8": -0.9173459670963467,
+    "9": -0.9173459670963467,
+    "10": -0.9173460549082728,
+    "11": -0.9173460247834673
+  },
+  "layer_p_values": {
+    "0": 0.007445494262528458,
+    "1": 0.007445498833793108,
+    "2": 0.007445492548304586,
+    "3": 0.007445496548160611,
+    "4": 0.007445496548160611,
+    "5": 0.007445498262384951,
+    "6": 0.007445499405201308,
+    "7": 0.007445496548160611,
+    "8": 0.007445496548160611,
+    "9": 0.007445496548160611,
+    "10": 0.007445492548304586,
+    "11": 0.007445494262528458
+  },
+  "layer_group_analysis": {
+    "early_layers": {
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "mean_effect": -0.9173459961961561,
+      "std_effect": 3.689103880850822e-08,
+      "95_ci": [
+        -0.9173460323493742,
+        -0.917345960042938
+      ]
+    },
+    "middle_layers": {
+      "layers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "mean_effect": -0.9173459670963466,
+      "std_effect": 1.0650725412170928e-08,
+      "95_ci": [
+        -0.917345979148777,
+        -0.9173459550439163
+      ]
+    },
+    "late_layers": {
+      "layers": [
+        9,
+        10,
+        11
+      ],
+      "mean_effect": -0.917346015596029,
+      "std_effect": 3.643295538423223e-08,
+      "95_ci": [
+        -0.9173460660895291,
+        -0.917345965102529
+      ]
+    }
+  },
+  "statistical_tests": {
+    "anova_across_layer_groups": {
+      "f_statistic": 1.6950176697984871,
+      "p_value": 0.23728202472703266
+    },
+    "bonferroni_corrected_alpha": 0.004166666666666667,
+    "significant_layers": []
+  },
+  "peak_analysis": {
+    "peak_layer": 2,
+    "peak_effect_size": -0.9173460549082728,
+    "is_middle_layer": false
+  },
+  "hypothesis_supported": false,
+  "interpretation": "NULL RESULT: No layer specialization for causal processing detected. Similar effects across early (d=-0.917), middle (d=-0.917), and late (d=-0.917) layers. Peak at layer 2. Causal attention may be distributed rather than localized."
+}
