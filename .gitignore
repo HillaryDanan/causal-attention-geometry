@@ -1,32 +1,31 @@
 # Python
 __pycache__/
-*.pyc
-.pytest_cache/
-
-# Environment
-.env
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
 venv/
+.env
 
-# Data
-*.csv
-data/raw/
+# OS
+.DS_Store
+Thumbs.db
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Mac
-.DS_Store
-
-# Debug files
-debug_scripts/
-test_*.py
-
-*.pyc
-__pycache__/
-.DS_Store
-debug_scripts/
-analysis_scripts/
+# Project specific
+archive/
 *.log
-.env
+*.tmp
+api_keys.txt
+credentials.json
 
+# Keep important results but ignore working files
+*.bak
+*_old.py
+*_test.py

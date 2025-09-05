@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-09-05T12:18:56.048428",
+  "hypothesis": "Circular causation requires less attention than linear sequences",
+  "method": "Corrected attention extraction (diagnostic-validated)",
+  "model_results": {
+    "bert-base-uncased": {
+      "circular_mean": 0.08120241612195969,
+      "linear_mean": 0.10407696142792702,
+      "mean_difference": -0.02287454530596733,
+      "percentage_reduction": 21.978490716994926,
+      "cohens_d": -4.695152273018225,
+      "t_statistic": -14.84737514405432,
+      "p_value": 1.23285024699169e-07,
+      "n_pairs": 10,
+      "compression_confirmed": true
+    },
+    "distilbert-base-uncased": {
+      "circular_mean": 0.08114746138453484,
+      "linear_mean": 0.10404269769787788,
+      "mean_difference": -0.022895236313343045,
+      "percentage_reduction": 22.00561579038144,
+      "cohens_d": -4.725859007745015,
+      "t_statistic": -14.944478365297565,
+      "p_value": 1.1650217742700354e-07,
+      "n_pairs": 10,
+      "compression_confirmed": true
+    },
+    "albert-base-v2": {
+      "circular_mean": 0.06909284219145775,
+      "linear_mean": 0.08958792611956597,
+      "mean_difference": -0.020495083928108213,
+      "percentage_reduction": 22.87706035381937,
+      "cohens_d": -4.882496685776274,
+      "t_statistic": -15.43981019527646,
+      "p_value": 8.77477385503013e-08,
+      "n_pairs": 10,
+      "compression_confirmed": true
+    }
+  },
+  "summary": {
+    "models_confirming": 3,
+    "total_models": 3,
+    "mean_reduction_percentage": 22.28705562039858,
+    "mean_effect_size": 4.767835988846504,
+    "conclusion": "SUPPORTED"
+  }
+}
